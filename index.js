@@ -1,46 +1,35 @@
-let greenCharacter = document.createElement('img');
-let pineTree = document.createElement('img');
-let shroomTree = document.createElement('img');
-let pillar = document.createElement('img');
-let crate = document.createElement('img');
-let well = document.createElement('img');
-
-function newImage(character, tree, tree2, pillars, box, waterSource) {
-  character.src = 'assets/green-character.gif';
-  character.style.position = 'fixed';
-  character.style.left = '100px';
-  character.style.bottom = '100px';
-  document.body.append(character);
-
-  tree.src = 'assets/pine-tree.png';
-  tree.style.position = 'fixed';
-  tree.style.left = '450px';
-  tree.style.bottom = '200px';
-  document.body.append(tree);
-
-  tree2.src = 'assets/tree.png';
-  tree2.style.position = 'fixed';
-  tree2.style.left = '200px';
-  tree2.style.bottom = '300px';
-  document.body.append(tree2);
-
-  pillars.src = 'assets/pillar.png';
-  pillars.style.position = 'fixed';
-  pillars.style.left = '350px';
-  pillars.style.bottom = '100px';
-  document.body.append(pillars);
-
-  box.src = 'assets/crate.png';
-  box.style.position = 'fixed';
-  box.style.left = '150px';
-  box.style.bottom = '200px';
-  document.body.append(box);
-
-  waterSource.src = 'assets/well.png';
-  waterSource.style.position = 'fixed';
-  waterSource.style.left = '500px';
-  waterSource.style.bottom = '425px';
-  document.body.append(waterSource);
+function newImage(url, left, bottom) {
+  let image = document.createElement('img');
+  image.src = url;
+  image.style.position = 'fixed';
+  image.style.left = left + 'px';
+  image.style.bottom = bottom + 'px';
+  document.body.append(image);
+  return image;
 }
 
-newImage(greenCharacter, pineTree, shroomTree, pillar, crate, well);
+function newItem(url, left, bottom) {
+  let item = newImage(url, left, bottom);
+  item.addEventListener('dblclick', function () {
+    item.remove();
+  });
+}
+
+newImage('assets/green-character.gif', 100, 100);
+newImage('assets/pine-tree.png', 450, 200);
+newImage('assets/tree.png', 200, 300);
+newImage('assets/pillar.png', 350, 100);
+newImage('assets/crate.png', 150, 200);
+newImage('assets/well.png', 500, 425);
+
+newItem('assets/sword.png', 500, 405);
+newItem('assets/sheild.png', 165, 185);
+newItem('assets/staff.png', 600, 100);
+
+for (let i = 0; i <= window.innerHeight; i++) {
+  console.log(i);
+}
+
+for (let i = 0; i <= window.innerWidth; i++) {
+  console.log(i);
+}
